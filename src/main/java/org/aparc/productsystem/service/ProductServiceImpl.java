@@ -2,6 +2,7 @@ package org.aparc.productsystem.service;
 
 import org.aparc.productsystem.dao.ProductDao;
 import org.aparc.productsystem.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,7 +16,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductDao getProductDao() {
         return productDao;
     }
-
+    @Autowired
     public void setProductDao(ProductDao productDao) {
         this.productDao = productDao;
     }

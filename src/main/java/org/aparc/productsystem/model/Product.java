@@ -4,17 +4,19 @@ package org.aparc.productsystem.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "PRODUCT")
+@Table(name = "products")
 public class Product {
 
     @Id
-    @Column(name = "PRODUCT_ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_seq_gen")
-    @SequenceGenerator(name = "product_id_seq_gen", sequenceName = "product_id_seq")
+    @Column(name = "productId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
 
-    @Column(name = "NAME")
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
+
+    @Column(name = "weight")
+    private double weight;
 
     @Override
     public String toString() {
@@ -24,9 +26,6 @@ public class Product {
                 ", weight=" + weight +
                 '}';
     }
-
-    @Column(name = "WEIGHT")
-    private double weight;
 
     public int getProductId() {
         return productId;

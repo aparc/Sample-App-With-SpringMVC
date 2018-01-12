@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProductController {
     private ProductService productService;
 
-    @Autowired
+    @Autowired(required = true)
 //    @Qualifier(value = "productService")
     public void setProductService(ProductService productService) {
         this.productService = productService;
@@ -29,7 +29,7 @@ public class ProductController {
         return "products";
     }
 
-    @RequestMapping(value = "/books/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/products/add", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product) {
         if(product.getProductId() == 0) {
             productService.createProduct(product);
