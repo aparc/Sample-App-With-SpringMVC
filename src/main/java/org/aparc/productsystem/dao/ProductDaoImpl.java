@@ -27,7 +27,7 @@ public class ProductDaoImpl implements ProductDao {
     @SuppressWarnings("uncheked")
     public List<Product> getAll() {
         Session session = factory.openSession();
-        List<Product> list = (List<Product>) session.createQuery("from Product").list();
+        List<Product> list = session.createQuery("from Product").list();
         
         return list;
     }
@@ -46,7 +46,7 @@ public class ProductDaoImpl implements ProductDao {
 
     public void remove(int id) {
         Session session = factory.getCurrentSession();
-        session.createQuery("delete from PRODUCT where PRODUCT_ID = :productId")
+        session.createQuery("delete from Product where productId = :productId")
                 .setParameter("productId", id)
                 .executeUpdate();
     }

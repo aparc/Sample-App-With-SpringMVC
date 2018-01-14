@@ -10,15 +10,11 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-
+    @Autowired
     private ProductDao productDao;
 
     public ProductDao getProductDao() {
         return productDao;
-    }
-    @Autowired
-    public void setProductDao(ProductDao productDao) {
-        this.productDao = productDao;
     }
 
     @Transactional

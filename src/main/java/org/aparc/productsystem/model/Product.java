@@ -1,6 +1,8 @@
 package org.aparc.productsystem.model;
 
 
+import org.aparc.productsystem.model.productcategory.ProductCategory;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,10 @@ public class Product {
 
     @Column(name = "weight")
     private double weight;
+
+    @ManyToOne(targetEntity = ProductCategory.class)
+    @JoinColumn(name = "categoryId")
+    private ProductCategory category;
 
     @Override
     public String toString() {
@@ -49,5 +55,13 @@ public class Product {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
     }
 }

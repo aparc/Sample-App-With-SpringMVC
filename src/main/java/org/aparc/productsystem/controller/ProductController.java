@@ -13,13 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ProductController {
+    @Autowired
     private ProductService productService;
-
-    @Autowired(required = true)
-//    @Qualifier(value = "productService")
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }
 
     @RequestMapping(value = "products", method = RequestMethod.GET)
     public String listProducts(Model model) {
