@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "productCategory")
+@Table(name = "productcategory")
 public class ProductCategory {
 
     @Id
@@ -20,8 +20,7 @@ public class ProductCategory {
 
     @OneToMany(
             mappedBy = "category",
-            targetEntity = Product.class,
-            fetch = FetchType.LAZY
+            targetEntity = Product.class
     )
     private Set<Product> products;
 

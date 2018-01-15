@@ -6,7 +6,7 @@ import org.aparc.productsystem.model.productcategory.ProductCategory;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 public class Product {
 
     @Id
@@ -21,7 +21,7 @@ public class Product {
     private double weight;
 
     @ManyToOne(targetEntity = ProductCategory.class)
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "categoryId_fk")
     private ProductCategory category;
 
     @Override

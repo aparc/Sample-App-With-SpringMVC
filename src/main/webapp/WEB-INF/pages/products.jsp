@@ -60,6 +60,7 @@
             <th width="80">ID</th>
             <th width="120">Name</th>
             <th width="120">Weight</th>
+            <th width="120">Category</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
@@ -68,6 +69,7 @@
                 <td>${product.productId}</td>
                 <td>${product.name}</td>
                 <td>${product.weight}</td>
+                <td>${product.category.name}</td>
                 <td><a href="<c:url value='/edit/${product.productId}'/>">Edit</a></td>
                 <td><a href="<c:url value='/remove/${product.productId}'/>">Delete</a></td>
             </tr>
@@ -113,6 +115,16 @@
             </td>
             <td>
                 <form:input path="weight"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form:label path="category">
+                    <spring:message text="CategoryId"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="category.categoryId"/>
             </td>
         </tr>
         <tr>
