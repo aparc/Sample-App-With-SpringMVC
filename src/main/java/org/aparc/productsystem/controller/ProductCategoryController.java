@@ -44,7 +44,7 @@ public class ProductCategoryController {
         return "categories";
     }
 
-    @RequestMapping(name = "/remove/{id}")
+    @RequestMapping(name = "categories/remove/{id}")
     public String removeCategory(@PathVariable("id") int id) {
         categoryService.remove(id);
         return "redirect:/categories";

@@ -5,7 +5,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Products Page</title>
+    <title>Category Page</title>
 
     <style type="text/css">
         .tg {
@@ -52,48 +52,43 @@
 <br/>
 <br/>
 
-<h1>Product List</h1>
+<h1>Categories List</h1>
 
-<c:if test="${!empty listProducts}">
+<c:if test="${!empty listCategories}">
     <table class="tg">
         <tr>
             <th width="80">ID</th>
             <th width="120">Name</th>
-            <th width="120">Weight</th>
-            <th width="120">Category</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${listProducts}" var="product">
+        <c:forEach items="${listCategories}" var="category">
             <tr>
-                <td>${product.productId}</td>
-                <td>${product.name}</td>
-                <td>${product.weight}</td>
-                <td>${product.category.name}</td>
-                <td><a href="<c:url value='/edit/${product.productId}'/>">Edit</a></td>
-                <td><a href="<c:url value='/remove/${product.productId}'/>">Delete</a></td>
+                <td>${category.categoryId}</td>
+                <td>${category.name}</td>
+                <td><a href="<c:url value='categories/edit/${category.categoryId}'/>">Edit</a></td>
+                <td><a href="<c:url value='categories/remove/${category.categoryId}'/>">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
 
+<h1>Add a Category</h1>
 
-<h1>Add a Product</h1>
+<c:url var="addAction" value="/categories/add"/>
 
-<c:url var="addAction" value="/products/add"/>
-
-<form:form action="${addAction}" commandName="product">
+<form:form action="${addAction}" commandName="category">
     <table>
-        <c:if test="${!empty product.name}">
+        <c:if test="${!empty category.name}">
             <tr>
                 <td>
-                    <form:label path="productId">
+                    <form:label path="categoryId">
                         <spring:message text="ID"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="productId" readonly="true" size="8" disabled="true"/>
-                    <form:hidden path="productId"/>
+                    <form:input path="categoryId" readonly="true" size="8" disabled="true"/>
+                    <form:hidden path="categoryId"/>
                 </td>
             </tr>
         </c:if>
@@ -108,28 +103,8 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <form:label path="weight">
-                    <spring:message text="Weight"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="weight"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="category">
-                    <spring:message text="CategoryId"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="category.categoryId"/>
-            </td>
-        </tr>
-        <tr>
             <td colspan="2">
-                <c:if test="${!empty product.name}">
+                <c:if test="${!empty category.name}">
                     <input type="submit"
                            value="<spring:message text="Edit Product"/>"/>
                 </c:if>
