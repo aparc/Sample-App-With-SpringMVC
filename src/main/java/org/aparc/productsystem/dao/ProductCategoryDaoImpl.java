@@ -23,7 +23,7 @@ public class ProductCategoryDaoImpl implements ProductCategoryDao {
 
     public List<ProductCategory> getAllCategories() {
         Session session = factory.getCurrentSession();
-        return session.createQuery("from ProductCategory ").list();
+        return session.createQuery("from ProductCategory").list();
     }
 
     public ProductCategory findById(int id) {

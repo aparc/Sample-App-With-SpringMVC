@@ -16,18 +16,14 @@ public class ProductCategoryController {
     @Autowired
     private ProductCategoryService categoryService;
 
-    public void setCategoryService(ProductCategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
-
-    @RequestMapping(name = "categories", method = RequestMethod.GET)
+    @RequestMapping(value = "categories", method = RequestMethod.GET)
     public String listCategories(Model model) {
         model.addAttribute("category", new ProductCategory());
         model.addAttribute("listCategories", categoryService.getAllCategories());
         return "categories";
     }
 
-    @RequestMapping(name = "/categories/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/categories/add", method = RequestMethod.POST)
     public String addCategory(@ModelAttribute("category") ProductCategory category) {
         if(category.getCategoryId() == 0) {
             categoryService.createCategory(category);
@@ -44,7 +40,7 @@ public class ProductCategoryController {
         return "categories";
     }
 
-    @RequestMapping(name = "categories/remove/{id}")
+    @RequestMapping(value = "categories/remove/{id}")
     public String removeCategory(@PathVariable("id") int id) {
         categoryService.remove(id);
         return "redirect:/categories";

@@ -9,5 +9,8 @@
 <br/>
 <a href="<c:url value="/products"/>" target="_blank">Product list</a>
 <br/>
+<br/>
+<a href="<c:url value="/categories"/>" target="_blank">Categories list</a>
+<br/>
 </body>
 </html>

@@ -45,6 +45,10 @@
         <property name="factory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
 
+    <bean id="categoryDao" class="org.aparc.productsystem.dao.ProductCategoryDaoImpl">
+        <property name="factory" ref="hibernate5AnnotatedSessionFactory"/>
+    </bean>
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
