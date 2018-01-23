@@ -1,9 +1,8 @@
 package org.aparc.productsystem.model;
 
 
-import org.aparc.productsystem.model.productcategory.ProductCategory;
-
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -23,6 +22,13 @@ public class Product {
     @ManyToOne(targetEntity = ProductCategory.class)
     @JoinColumn(name = "categoryId_fk")
     private ProductCategory category;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "productAndProducer",
+            joinColumns = {@JoinColumn(name = "productId")},
+            inverseJoinColumns = {@JoinColumn(name = "producerId")})
+    private Set<Producer> producers;
 
     @Override
     public String toString() {
@@ -63,5 +69,13 @@ public class Product {
 
     public void setCategory(ProductCategory category) {
         this.category = category;
+    }
+
+    public Set<Producer> getProducers() {
+        return producers;
+    }
+
+    public void setProducers(Set<Producer> producers) {
+        this.producers = producers;
     }
 }

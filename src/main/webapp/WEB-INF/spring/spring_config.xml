@@ -29,7 +29,8 @@
         <property name="annotatedClasses">
             <list>
                 <value>org.aparc.productsystem.model.Product</value>
-                <value>org.aparc.productsystem.model.productcategory.ProductCategory</value>
+                <value>org.aparc.productsystem.model.ProductCategory</value>
+                <value>org.aparc.productsystem.model.Producer</value>
             </list>
         </property>
         <property name="hibernateProperties">

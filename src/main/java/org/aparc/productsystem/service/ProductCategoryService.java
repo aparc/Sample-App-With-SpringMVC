@@ -1,7 +1,7 @@
 package org.aparc.productsystem.service;
 
 
-import org.aparc.productsystem.model.productcategory.ProductCategory;
+import org.aparc.productsystem.model.ProductCategory;
 
 import java.util.List;
 

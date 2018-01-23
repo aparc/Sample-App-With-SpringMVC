@@ -1,6 +1,6 @@
 package org.aparc.productsystem.dao;
 
-import org.aparc.productsystem.model.productcategory.ProductCategory;
+import org.aparc.productsystem.model.ProductCategory;
 
 import java.util.List;
 

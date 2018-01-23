@@ -1,6 +1,6 @@
 package org.aparc.productsystem.controller;
 
-import org.aparc.productsystem.model.productcategory.ProductCategory;
+import org.aparc.productsystem.model.ProductCategory;
 import org.aparc.productsystem.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

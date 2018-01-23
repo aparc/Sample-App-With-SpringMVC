@@ -1,7 +1,7 @@
 package org.aparc.productsystem.service;
 
 import org.aparc.productsystem.dao.ProductCategoryDao;
-import org.aparc.productsystem.model.productcategory.ProductCategory;
+import org.aparc.productsystem.model.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

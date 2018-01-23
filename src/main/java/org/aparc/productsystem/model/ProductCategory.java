@@ -1,4 +1,4 @@
-package org.aparc.productsystem.model.productcategory;
+package org.aparc.productsystem.model;
 
 
 import org.aparc.productsystem.model.Product;
