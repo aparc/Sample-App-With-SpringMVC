@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
     <context:component-scan base-package="org.aparc.productsystem"/>
     <mvc:view-controller path="/" view-name="index"/>
     <bean id="resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -54,11 +55,10 @@
         <property name="factory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
 
+    <context:component-scan base-package="org.aparc.productsystem"/>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
-
-    <mvc:default-servlet-handler/>
 </beans>
