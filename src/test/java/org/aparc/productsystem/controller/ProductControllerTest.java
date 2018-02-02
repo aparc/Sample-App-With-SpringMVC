@@ -5,13 +5,12 @@ import org.aparc.productsystem.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.ArrayList;
@@ -19,6 +18,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -48,7 +48,6 @@ public class ProductControllerTest {
     @Test
     public void listProductsTest() throws Exception {
         List<Product> productList = new ArrayList<Product>();
-        Product prod = new Product();
         productList.add(new Product());
         productList.add(new Product());
 
@@ -60,6 +59,21 @@ public class ProductControllerTest {
                 .andExpect(model().attribute("product", notNullValue()))
                 .andExpect(view().name("products"))
                 .andExpect(model().attribute("listProducts",hasSize(2)));
+    }
+
+    @Test
+    public void addProductTest_updateProduct() throws Exception {
+        Product product = new Product();
+        product.setProductId(23);
+
+        mockMvc.perform(post("/products/add")
+                .param("productId", "2")
+                .flashAttr("product", new Product()))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
+
+//        verify(productService).createProduct(Matchers.any(Product.class));
+        verify(productService).update(Matchers.any(Product.class));
     }
 }
 
